@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.heqingbao.booksys.controller"/>
+
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/content/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- springmvc前端控制器配置拦截 /：会拦截所有请求包括静态资源。需要添加静态资源的映射。 -->
+    <mvc:resources location="/bootstrap/" mapping="/bootstrap/**"></mvc:resources>
+    <mvc:resources location="/jquery/" mapping="/jquery/**"></mvc:resources>
+    <mvc:resources location="/angularjs/" mapping="/angularjs/**"></mvc:resources>
+    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+    <mvc:resources location="/WEB-INF/content/" mapping="/res/**"></mvc:resources>
+    <mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+</beans>
